@@ -1,0 +1,39 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {
+      "config.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<feature name=\"iDocument\"><param name=\"ios-package\" value=\"iDocument\" /></feature>",
+              "count": 1
+            }
+          ]
+        }
+      }
+    }
+  },
+  "installed_plugins": {
+    "cordova-plugin-Document": {
+      "PACKAGE_NAME": "cedtris.DocDemo"
+    }
+  },
+  "dependent_plugins": {},
+  "modules": [
+    {
+      "id": "cordova-plugin-Document.iDocument",
+      "file": "plugins/cordova-plugin-Document/www/iDocument.js",
+      "pluginId": "cordova-plugin-Document",
+      "clobbers": [
+        "iDocument"
+      ]
+    }
+  ],
+  "plugin_metadata": {
+    "cordova-plugin-Document": "1.0.0"
+  }
+}

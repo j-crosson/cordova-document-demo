@@ -1,0 +1,144 @@
+:root {
+    color-scheme: light dark;
+}
+@media (prefers-color-scheme: light) {
+    :root {
+        --color-scheme-background: white;
+        --color-scheme-backgroundPushed: darkgray;
+        --color-scheme-backgroundSelected: blue;
+        --color-scheme-text-color: black;
+        --color-scheme-text-selected: white;
+        --listcolor-scheme-background: #E4E4E4;
+    }
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+      --color-scheme-background: black;
+      --color-scheme-backgroundPushed: darkgray;
+      --color-scheme-backgroundSelected: blue;
+      --color-scheme-text-color: white;
+      --color-scheme-text-selected: white;
+      --listcolor-scheme-background: #1E1E1E;
+    }
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background: var(--listcolor-scheme-background);
+    font-family: system-ui, -apple-system, -apple-system-font, 'Segoe UI', 'Roboto', sans-serif;
+    height:100vh;
+    width:100vw;
+    margin:0px;
+    padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px)  0px;
+    /* Padding to avoid the "unsafe" areas behind notches in the screen */
+}
+
+.wrap {
+    padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+}
+
+.itemButton {
+    font-weight:bold;
+    font: -apple-system-headline;
+    font-size:2em;
+    border-radius: 25px;
+    border: 2px solid var(--color-scheme-backgroundPushed);
+}
+
+.dialogButton {
+    font-weight:bold;
+    font: -apple-system-headline;
+    font-size:2em;
+    border-radius: 30px;
+    border: 1px solid var(--color-scheme-text-color);
+}
+
+.dialogText {
+    color: var(--color-scheme-text-color);
+}
+dialog {
+    background: var(--listcolor-scheme-background);
+    border-color: var(--color-scheme-text-color);
+}
+
+.itemButtonChild {
+    display: block;
+    width: 90%;
+    background: var(--color-scheme-background);
+    color: var(--color-scheme-text-color);
+    text-align: center;
+    border: 1px solid rgba(128,128,128,0.5);
+    border-radius: 5px;
+    font-weight:bold;
+    font: -apple-system-headline;
+    padding: 14px 28px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pushedButtonChild {
+    display: block;
+    width: 90%;
+    background: var(--color-scheme-backgroundPushed);
+    color: var(--color-scheme-text-color);
+    text-align: center;
+    border:none;
+    font-weight:bold;
+    font: -apple-system-headline;
+    padding: 14px 28px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.itemSelected {
+    display: block;
+    width: 100%;
+    background: var(--color-scheme-backgroundSelected);
+    color: var(--color-scheme-text-selected);
+    text-align: center;
+    border:none;
+    font-weight:bold;
+    font: -apple-system-headline;
+    padding: 14px 28px;
+}
+
+.center {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+   
+.description {
+    font-size:1.5em;
+}
+
+.centertxt {
+    font-size:2em;
+    padding:2em;
+}
+.centerIt {
+    text-align: center;
+}
+.noEdit {
+    display: none;
+}
+
+.txtEdit {
+    width: 75%;
+    height: 25%;
+    position: fixed;
+    font-size:1.5em;
+    top: 50%;
+    margin-left: 2em;
+    overflow-y: scroll;
+}
+.exitButton {
+    font-weight:bold;
+    font: -apple-system-headline;
+    font-size:2em;
+    border-radius: 25px;
+    border: 2px solid var(--color-scheme-backgroundPushed);
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, width=device-width, height=device-height, viewport-fit=cover">
+        <link rel="stylesheet" href="css/index.css">
+        <script src="cordova.js"></script>
+        <script src="js/index.js"></script>
+        <title> </title>
+    </head>
+    <body>
+        <div class = "wrap"> 
+            <div id="documentOptions" style = "margin-top: 50px;">
+                <button id="0" type="button" onclick= "selectItem(0);" ontouchstart="this.className='pushedButtonChild';" ontouchend="this.className='itemButtonChild';" class="itemButtonChild">Create Text Document</button>
+                <button id="1" type="button" onclick= "selectItem(1);" ontouchstart="this.className='pushedButtonChild';" ontouchend="this.className='itemButtonChild';" class="itemButtonChild">Create Binary Document</button>
+                <button id="2" type="button" onclick= "selectItem(2);" ontouchstart="this.className='pushedButtonChild';" ontouchend="this.className='itemButtonChild';" class="itemButtonChild">Create Text Document in Folder</button>
+                <button id="4" type="button" onclick= "selectItem(5);" ontouchstart="this.className='pushedButtonChild';" ontouchend="this.className='itemButtonChild';" class="itemButtonChild">Edit Text Document</button>
+                <dialog id="dialog1">
+                  <p class = "dialogText">Document dosen't exist. Create document with "Create" option.</p>
+                  
+                  <div class="centerIt">
+                      <br>
+                      <button id= "dialogbutton" class="dialogButton">Ok</button>
+                      <br>
+                  </div>
+                  
+                </dialog>
+                <button id="5" type="button" onclick= "selectItem(4);" ontouchstart="this.className='pushedButtonChild';" ontouchend="this.className='itemButtonChild';" class="itemButtonChild">Edit Binary Document</button>
+                <button id="6" type="button" onclick= "selectItem(3);" ontouchstart="this.className='pushedButtonChild';" ontouchend="this.className='itemButtonChild';" class="itemButtonChild">Select and Edit Text Document</button>
+            </div>
+            <div id="createDoc" style = "display:none; margin: 1em">
+                <span id= "docText" style = "font-size:1.5em"> </span>
+                <br><br><br>
+                <div class="centerIt">
+                    <button type="button" id = "docButton" class = "itemButton"  >Create
+                    </button>
+                </div>
+                <br>
+                <div id = "exitBut" class="centerIt">
+                    <button type="button" id = "cancelIt" class = "itemButton" onclick =  "goHome();">Cancel
+                    </button>
+                </div>
+            </div>
+            <div id="createBinDoc" style = "display:none; margin: 1em">
+                <span class = "description"> Create bin document "untitled.bin" in the Documents Directory.  If the file already exists, it will be overwritten. </span>
+                <br><br><br>
+                <div class="centerIt">
+                    <button  type="button"  class = "itemButton" onclick =  " iDocument.documentAction ('create', binDocCreated, operationFailed,['untitled.bin',false])" >Create
+                    </button>
+                </div>
+                <br>
+                <div id = "exitBut" class="centerIt">
+                    <button type="button" id = "cancelIt" class = "itemButton" onclick =  "goHome();">Cancel
+                    </button>
+                </div>
+            </div>
+            <div id="creatingTextDoc" style = "display:none">
+                <span id= "centertext" class="centertxt"> Creating Document</span>
+            </div>
+            <div  id = "editText" class ="noEdit">
+                <div id = "exitBut1" class="centerIt">
+                    <br><br><br><br><br>
+                    <div class="centerIt">
+                        <button type="button"  class = "itemButton" onclick =  "saveTextDocAndExit();">Save </button>
+                    </div>
+                    <br>
+                    <div class="centerIt">
+                        <button type="button" class = "itemButton"  onclick = "docSaved();">Cancel</button>
+                    </div>
+
+                </div>
+                <div class = "txtEdit">
+                    <p id = "textgraph"  contenteditable="true" style="user-select: text; -webkit-user-select: text;">
+                      
+                    </p>
+                </div>
+            </div>
+            <div  id = "editBin" class ="noEdit">
+                <div class="centerIt">
+                <span class = "description"> Edit four byte binary test document. </span>
+                </div>
+                <br><br>
+                <div class="centerIt">
+                <input type="text" style = "font-size:1.5em" id = "input0" maxlength="1" size="1" autocapitalize="characters" onkeyup="keyup(event)" onfocus="this.value=''" value="1"/>
+                <input type="text" style = "font-size:1.5em" id = "input1" maxlength="1" size="1" autocapitalize="characters" onkeyup="keyup(event)" onfocus="this.value=''" value="2"/>
+                </br>
+                <input type="text" style = "font-size:1.5em" id = "input2" maxlength="1" size="1" autocapitalize="characters" onkeyup="keyup(event)" onfocus="this.value=''" value="1"/>
+                <input type="text" style = "font-size:1.5em" id = "input3" maxlength="1" size="1" autocapitalize="characters" onkeyup="keyup(event)" onfocus="this.value=''" value="2"/>
+                </br>
+                <input type="text" style = "font-size:1.5em" id = "input4" maxlength="1" size="1" autocapitalize="characters" onkeyup="keyup(event)" onfocus="this.value=''" value="1"/>
+                <input type="text" style = "font-size:1.5em" id = "input5" maxlength="1" size="1" autocapitalize="characters" onkeyup="keyup(event)" onfocus="this.value=''" value="2"/>
+                </br>
+                <input type="text" style = "font-size:1.5em" id = "input6" maxlength="1" size="1" autocapitalize="characters" onkeyup="keyup(event)" onfocus="this.value=''" value="1"/>
+                <input type="text" style = "font-size:1.5em" id = "input7" maxlength="1" size="1" autocapitalize="characters" onkeyup="keyup(event)" onfocus="this.value=''" value="2"/>
+                </div>
+                <br>
+                <div class="centerIt">
+                    <button type="button" id = "saveit" class = "itemButton" onclick =  "saveBinDocAndExit();">Save </button>
+                </div>
+                <br>
+                <div class="centerIt">
+                    <button type="button" class = "itemButton"  onclick = "docSaved();">Cancel</button>
+                </div>
+            </div>
+    </body>
+</html>
+
